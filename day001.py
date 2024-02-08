@@ -1,14 +1,29 @@
-import mymath
-import time
+import random
 
-if __name__ == "__main__":  # 모듈, 여러 개의 파일 중 main 파일의 안쪽 코드 실행!!!!!
-    n = int(input("Input n : "))
-    r = int(input("Input r : "))
-    # start = time.time()
-    print(f"{n}C{r} = {mymath.nCr(n, r)}")
-    # end = time.time()
-    # print (f"소요시간 : {end - start}")
+num = int(input("1부터 100사이 숫자 입력: "))
 
-    # # factorial 테스트용
-    # f = int(input())
-    # print(mymath.factorial(f))
+answer = random.randint(1,100)
+
+count = 0
+
+while True:
+
+    if num == answer:
+        print("정답 입니다.")
+        count = count + 1
+        print(f"{count}번 만에 맞히셨습니다.")
+        break
+    elif num < answer:
+        print("입력한 숫자 보다 큽니다.")
+        num = int(input("1부터 100사이 숫자 입력: "))
+        count = count + 1
+
+    elif num > answer:
+        print("입력한 숫자 보다 작습니다.")
+        num = int(input("1부터 100사이 숫자 입력: "))
+        count = count + 1
+
+
+
+
+

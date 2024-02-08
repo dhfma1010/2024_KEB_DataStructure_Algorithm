@@ -37,16 +37,16 @@ def factorial(number) -> int: # 재귀 함수 성능 느림 -- 창고에 쌓아�
 
 
 def timer(func):
-    def wrapper(*args, **kwargs):
+    def wrapper(*args, **kwargs):  # inner 함수 = 클로저
         start = time.time()
         result = func(*args, **kwargs)
         end = time.time()
         print(f"time elapsed: {end - start}")
         return result
-    return wrapper # 클로저는 괄호 없음!
+    return wrapper # 클로저는 괄호 없음!, 매개 변수 받지 않고 함수 호출
 
 
-@timer
+@timer      # 필요한 기능 넣었다 뺐다 함.
 def nCr(n, r) -> int: # SRP , OCP
     '''
     조합함수
