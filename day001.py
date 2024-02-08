@@ -3,9 +3,13 @@ def print_poly(f_x) -> str:
     poly_expression = "f(x) = "
 
     for i in range(len(fx)):
+
         coefficient = f_x[i]
 
-        if coefficient >= 0:
+        if coefficient == 0:  # 계수가 0이면 더하지 않고 넘어감
+            term -= 1
+            continue
+        if coefficient >= 0 and i != 0:  # 맨 앞에는 +부호 붙이지 않음
             poly_expression += "+"
         poly_expression += f'{coefficient}X^{term} '
         term -= 1
