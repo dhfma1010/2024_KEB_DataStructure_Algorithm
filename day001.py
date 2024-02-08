@@ -1,29 +1,20 @@
 import random
 
-num = int(input("1부터 100사이 숫자 입력: "))
+answer = random.randint(1, 100)
+chance = 7
 
-answer = random.randint(1,100)
-
-count = 0
-
-while True:
-
-    if num == answer:
-        print("정답 입니다.")
-        count = count + 1
-        print(f"{count}번 만에 맞히셨습니다.")
-        break
-    elif num < answer:
-        print("입력한 숫자 보다 큽니다.")
-        num = int(input("1부터 100사이 숫자 입력: "))
-        count = count + 1
-
-    elif num > answer:
-        print("입력한 숫자 보다 작습니다.")
-        num = int(input("1부터 100사이 숫자 입력: "))
-        count = count + 1
+while chance!= 0:
+	guess = int(input("Input number 1~100: "))
+	if guess == answer:
+		print(f'You win. Answer is {answer}')
+		break
+	elif guess > answer:
+		print(f'{guess} is bigger than answer. \nChance left : {chance}')
+		chance = chance -1
+	else:
+		print(f'{guess} is lower than answer. \n Chance left : {chance}')
+		chance = chance -1
 
 
-
-
-
+else:
+	print(f'You lost. Answer is {answer}')
