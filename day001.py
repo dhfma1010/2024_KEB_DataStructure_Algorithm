@@ -1,38 +1,63 @@
-def print_poly(t_x, f_x) -> str:
-
-    poly_expression = "f(x) = "
-
-    for i in range(len(fx)):
-        term = t_x[i]
-        coefficient = f_x[i]
-
-        if coefficient >= 0 and i != 0:  # 맨 앞에는 +부호 붙이지 않음
-            poly_expression += "+"
-        poly_expression += f'{coefficient}X^{term} '
-
-    return poly_expression
+class Node :
+    def __init__(self) :
+        self.data = None
+        self.link = None
 
 
-def calculation_poly(x_value, t_x, f_x) -> int:
-    return_value = 0
+def printNodes(start) :
+
+        current = start
+
+    if current is None :
+        return
+        print(current.data, end = ' ')
+
+        current = current.link # 다음 다음 으로 이동
+        print(current.data, end=' ')
+    print()
+
+def insertNode(findData, insertData) :
+	global memory, head, current, pre
+
+	if head.data == findData :      # 첫 번째 노드 삽입
+		node = Node()
+		node.data = insertData
+		node.link = head
+		head = node
+		return
+
+	current = head
+	while current.link != None :    # 중간 노드 삽입
+		pre = current
+		current = current.link
+		if current.data == findData :
+			node = Node()
+			node.data = insertData
+			node.link = current
+			pre.link = node
+			return
+
+	node = Node()                   # 마지막 노드 삽입
+	node.data = insertData
+	current.link = node
 
 
-    for i in range(len(fx)):
-        term = tx[i]
-        coefficient = f_x[i]
-        return_value += coefficient * pow(x_value, term)
+head, current, pre = None, None, None
+dataArray = ["다현", "정연", "쯔위", "사나", "지효"]
+
+## 메인 코드 부분 ##
+if __name__ == "__main__" :
+
+node = Node()
+node.data = dataArray[0]
+head = node
 
 
-    return return_value
-
-fx = [2, 3, 4]
-tx = [500, 10, 0]
-
-if __name__ == "__main__":
-
-    print(print_poly(tx, fx))
-
-    pxValue = calculation_poly(int(input("X 값 : ")), tx, fx)
-    print(pxValue)
+for data in dataArray[1:]:
+pre = node
+node = Node()
+node.data = data
+pre.link = node
 
 
+printNodes(head)
